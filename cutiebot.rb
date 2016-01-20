@@ -5,11 +5,11 @@ class CutieBot < SlackRubyBot::Bot
     client.say(text: 'pong', channel: data.channel)
   end
 
-  match /thanks (?<name>\w*)/ do |client, data, match|
+  match /thanks (?<name>\w*)/i do |client, data, match|
     name = []
     done = 0
     match[:name].split("").each do |c|
-      if "aeiou".include? c
+      if "aeiouAEIOU".include? c
         name.push(c)
         done = 1
       elsif done == 1
